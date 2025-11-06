@@ -1,0 +1,57 @@
+# Playwright Python Test Automation Portfolio
+
+**Author:** Horatiu Crista  
+**Contact:** dbmhorace@gmail.com
+
+## 📋 Project Overview
+
+This is a comprehensive test automation suite for the [Sauce Demo](https://www.saucedemo.com/) e-commerce website, built using **Playwright with Python** and **pytest**.
+```
+
+---
+
+## Example 100: Push to GitHub! 🎉
+
+Now let's get this on GitHub:
+
+### Step 1: Create .gitignore file
+
+Create file `portfolio_project/.gitignore`:
+```
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+
+# Playwright
+test-results/
+playwright-report/
+screenshots/
+videos/
+*.png
+*.mp4
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+report.html
+assets/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test data
+test_users.db
+*.db

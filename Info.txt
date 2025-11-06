@@ -1,0 +1,15 @@
+Playwright/
+├── portfolio_project/
+│   ├── tests/
+│   │   ├── __init__.py
+│   │   ├── pages/
+│   │   │   ├── __init__.py
+│   │   │   ├── login_page.py
+│   │   │   ├── products_page.py
+│   │   │   └── cart_page.py
+│   │   ├── test_login.py
+│   │   ├── test_products.py
+│   │   └── test_cart.py
+│   ├── pytest.ini
+│   ├── requirements.txt
+│   └── README.md

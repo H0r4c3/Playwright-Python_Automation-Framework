@@ -1,0 +1,42 @@
+ Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+venv-playwright/
+
+# Playwright
+test-results/
+playwright-report/
+screenshots/
+videos/
+*.png
+*.mp4
+trace-*.zip
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+report.html
+assets/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test data
+test_users.db
+*.db
+
+# Auth
+auth.json

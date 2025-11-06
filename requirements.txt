@@ -1,0 +1,13 @@
+'''
+What it does:
+
+Lists all dependencies with versions
+Anyone can install with: pip install -r requirements.txt
+Important for sharing your project
+'''
+
+playwright==1.49.1
+pytest==8.4.2
+pytest-playwright==0.7.1
+pytest-html==4.1.1
+pytest-xdist==3.6.1
