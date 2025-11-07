@@ -1,7 +1,5 @@
 '''
 Example 106: Add Data-Driven Tests
-
-
 '''
 
 import pytest

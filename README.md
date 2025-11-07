@@ -49,6 +49,22 @@ portfolio_project/
 
 ---
 
+**##** 🛠️ Development Tools
+
+**###** Code Generation
+**``**bash** **# Generate test code** **playwright codegen https://www.saucedemo.com** **``
+
+**###** Debugging
+**``**bash** **# Debug with inspector** **set**PWDEBUG**=**1** **pytest tests/test_login.py** **``**
+
+**###** Trace Viewing
+**``**bash** **# View test execution trace** **playwright show-trace test-results/trace-test_name.zip** **``
+
+**###** Authentication State
+**```**bash**
+**# Save login state**
+**python save_auth.py
+
 ## 🚀 Setup Instructions
 
 ### 1. Clone the repository
@@ -169,6 +185,66 @@ pytest tests/ -v --headed=false
 
 **Total: 18 automated tests**
 
+## 🚀 Advanced Features
+
+### API Testing
+
+- ✅ GET, POST, PUT, DELETE requests
+- ✅ Response validation
+- ✅ Status code verification
+
+### Performance Testing
+
+- ✅ Page load time measurement
+- ✅ DOM ready time tracking
+- ✅ Performance thresholds validation
+
+### Mobile Testing
+
+- ✅ iPhone 12 responsive testing
+- ✅ iPad Pro tablet testing
+- ✅ Pixel 5 Android testing
+
+### Visual Regression Testing
+
+- ✅ Full page screenshot comparison
+- ✅ Element-level visual testing
+- ✅ Baseline image management
+
+### Accessibility Testing
+
+- ✅ Keyboard navigation
+- ✅ Form label validation
+- ✅ Heading structure verification
+
+### Data-Driven Testing
+
+- ✅ Parametrized test cases
+- ✅ Multiple user scenarios
+  **- ✅ Invalid input validation**
+
+## 🎯 Extended Test Execution
+
+**|** Command **|** Description **|**
+**|**---------**|**-------------**|**
+**|**`pytest tests/ -v -m api`**|** Run only API tests **|**
+**|**`pytest tests/ -v -m performance`**|** Run performance tests **|**
+**|**`pytest tests/ -v -m mobile`**|** Run mobile tests **|**
+**|**`pytest tests/ -v -m visual`**|** Run visual regression tests **|**
+**|**`pytest tests/ -v -m accessibility`**|** Run accessibility tests **|**
+
+## 📊 Complete Test Statistics
+
+**-****UI Tests:****** 18 tests
+**-****API Tests:****** 4 tests
+**-****Performance Tests:****** 2 tests
+**-****Mobile Tests:****** 3 tests
+**-****Visual Tests:****** 3 tests
+**-****Accessibility Tests:****** 3 tests
+**-****Data-Driven Tests:****** 7 tests
+
+******Total: 40 automated tests****** across multiple testing categories!
+
 ---
 
 ## 🎯 Test Execution Options
@@ -220,16 +296,6 @@ Shared setup and teardown code using pytest fixtures:
 - `cart_page` - Provides CartPage instance
 - `logged_in_user` - Pre-authenticated user session
 
-## 👤 Author
-
-**Horatiu Crista**
-
-- LinkedIn: [linkedin.com/in/horatiu-crista](https://www.linkedin.com/in/horatiu-crista)
-- GitHub: [github.com/H0r4c3](https://github.com/H0r4c3)
-- Email: dbmhorace@gmail.com
-
----
-
 ## 📝 Notes
 
 - Tests are designed to run independently
@@ -246,3 +312,32 @@ Shared setup and teardown code using pytest fixtures:
 - [ ] Add database validation tests
 - [ ] Integrate with CI/CD pipeline
 - [ ] Add performance testing metrics
+- [ ]
+
+## 🛠️ Development Tools
+
+**###** Code Generation
+**``**bash** **# Generate test code** **playwright codegen https://www.saucedemo.com** **``
+
+**###** Debugging
+**``**bash** **# Debug with inspector** **set**PWDEBUG**=**1** **pytest tests/test_login.py** **``**
+
+**###** Trace Viewing
+**``**bash** **# View test execution trace** **playwright show-trace test-results/trace-test_name.zip** **``
+
+**###** Authentication State
+**```**bash**
+**# Save login state**
+**python save_auth.py
+
+**# Tests use saved authentication (faster!)**
+
+## 👤 Author
+
+**Horatiu Crista**
+
+- LinkedIn: [linkedin.com/in/horatiu-crista](https://www.linkedin.com/in/horatiu-crista)
+- GitHub: [github.com/H0r4c3](https://github.com/H0r4c3)
+- Email: dbmhorace@gmail.com
+
+---

@@ -13,3 +13,161 @@ Playwright/
 │   ├── pytest.ini
 │   ├── requirements.txt
 │   └── README.md
+
+
+Example 109: Mastering Playwright Codegen
+Basic Codegen Usage
+bash# Open codegen with a URL
+playwright codegen https://www.saucedemo.com
+
+# Open codegen and specify output file
+playwright codegen --target python -o my_test.py https://www.saucedemo.com
+
+# Open codegen in specific browser
+playwright codegen --browser firefox https://www.saucedemo.com
+
+# Open codegen with device emulation
+playwright codegen --device="iPhone 12" https://www.saucedemo.com
+
+# Open codegen with viewport size
+playwright codegen --viewport-size=800,600 https://www.saucedemo.com
+
+
+Codegen Advanced Options
+bash# Record in headless mode (no browser window)
+playwright codegen --headless https://www.saucedemo.com
+
+# Save authentication state
+playwright codegen --save-storage=auth.json https://www.saucedemo.com
+
+# Load authentication state (continue from logged-in state)
+playwright codegen --load-storage=auth.json https://www.saucedemo.com
+
+# Set custom user agent
+playwright codegen --user-agent="Custom Bot" https://www.saucedemo.com
+
+# Record with specific language
+playwright codegen --lang=en-US https://www.saucedemo.com
+
+# Record with timezone
+playwright codegen --timezone="America/New_York" https://www.saucedemo.com
+
+Codegen Best Practices
+1. Use codegen to discover selectors:
+bashplaywright codegen https://www.saucedemo.com
+
+Click on elements
+Copy the generated selectors
+Use them in your Page Objects
+
+2. Generate test skeleton:
+bashplaywright codegen --target python -o draft_test.py https://www.saucedemo.com
+
+Creates a basic test structure
+You refine it manually
+Add assertions and logic
+
+3. Don't use codegen output directly:
+
+❌ Generated code is messy
+❌ No Page Object Model
+❌ No good assertions
+✅ Use it as a starting point only
+
+
+
+
+Example 110: Playwright Inspector (Better than Codegen)
+The Inspector is a powerful debugging tool!
+Launch Inspector:
+bash# Set environment variable
+set PWDEBUG=1  # Windows
+export PWDEBUG=1  # Mac/Linux
+
+# Then run your test
+pytest tests/test_login.py::test_successful_login
+Or in your test code:
+pythondef test_with_inspector(page):
+    page.pause()  # Pauses execution and opens Inspector
+    page.goto("https://www.saucedemo.com/")
+    # ... rest of test
+What Inspector Does:
+
+✅ Step through test line by line
+✅ Inspect elements in real-time
+✅ Try selectors interactively
+✅ See what Playwright sees
+✅ Debug failing tests
+
+
+Example 111: Playwright Trace Viewer (VERY Important!)
+Traces are recordings of your test execution - amazing for debugging!
+Enable Tracing in Tests:
+Update portfolio_project/tests/conftest.py:
+pythonimport pytest
+
+@pytest.fixture(scope="function", autouse=True)
+def trace_on_failure(page, request):
+    """Record trace on test failure"""
+    # Start tracing
+    page.context.tracing.start(screenshots=True, snapshots=True, sources=True)
+    
+    yield
+    
+    # Stop tracing and save if test failed
+    if request.node.rep_call.failed:
+        page.context.tracing.stop(path=f"test-results/trace-{request.node.name}.zip")
+    else:
+        page.context.tracing.stop()
+
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    """Store test result for trace decision"""
+    outcome = yield
+    rep = outcome.get_result()
+    setattr(item, f"rep_{rep.when}", rep)
+
+View Traces:
+bash# View a specific trace
+playwright show-trace test-results/trace-test_name.zip
+
+# Or use online viewer
+# Upload to: https://trace.playwright.dev/
+What Traces Show:
+
+✅ Every action taken
+✅ Screenshots at each step
+✅ Network requests
+✅ Console logs
+✅ Page source at each step
+✅ Timing information
+
+This is GOLD for debugging!
+
+
+
+Summary of What You Should Know:
+Essential Commands:
+bash# Codegen
+playwright codegen [URL]
+
+# Inspector
+set PWDEBUG=1 && pytest tests/test_name.py
+
+# Trace viewer
+playwright show-trace trace.zip
+
+# Install browsers
+playwright install
+
+# Screenshots
+playwright screenshot [URL] example.png
+Key Concepts:
+
+✅ Codegen - Generate test code (starting point only)
+✅ Inspector - Debug tests step-by-step
+✅ Traces - Record full test execution
+✅ Contexts - Isolate tests (cookies, storage, etc.)
+✅ Network interception - Mock APIs, block resources
+✅ Video recording - Record test execution
+✅ Authentication state - Save/load login sessions
