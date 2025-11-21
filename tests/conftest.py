@@ -15,7 +15,7 @@ Example 111: Playwright Trace Viewer (VERY Important!)
 Traces are recordings of your test execution - amazing for debugging!
 Enable Tracing in Tests:
 Update portfolio_project/tests/conftest.py:
-pythonimport pytest
+import pytest
 
 @pytest.fixture(scope="function", autouse=True)
 def trace_on_failure(page, request):
@@ -117,7 +117,7 @@ def pytest_runtest_makereport(item, call):
 
 import pytest
 from playwright.sync_api import Browser
-from playwright_config import PlaywrightConfig
+# from playwright_config import PlaywrightConfig
 
 @pytest.fixture
 def context(browser: Browser):
@@ -156,4 +156,18 @@ def page_with_video(context_with_video):
     # Video is saved automatically when context closes
     video_path = page.video.path()
     print(f"\n🎥 Video saved: {video_path}")
+    
+@pytest.fixture
+def authenticated_context(browser):
+    """Context with saved authentication"""
+    context = browser.new_context(storage_state='auth.json')
+    yield context
+    context.close()
+
+@pytest.fixture
+def authenticated_page(authenticated_context):
+    """Page that's already logged in"""
+    page = authenticated_context.new_page()
+    yield page
+    page.close()
     
