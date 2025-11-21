@@ -1,57 +1,21 @@
-# Playwright Python Test Automation Portfolio
+Standard Playwright Structure (Most Common):
+project/
+├── pages/                    # Page Object Models (POM)
+│   ├── __init__.py
+│   ├── login_page.py
+│   └── dashboard_page.py
+├── tests/                    # Test files
+│   ├── __init__.py
+│   ├── test_login.py
+│   └── test_dashboard.py
+├── fixtures/                 # Test data, helper fixtures
+│   ├── __init__.py
+│   └── test_data.py
+├── utils/                    # Helper functions
+│   ├── __init__.py
+│   └── helpers.py
+├── conftest.py              # Global fixtures & hooks
+├── pytest.ini               # Pytest configuration
+└── requirements.txt
 
-**Author:** Horatiu Crista  
-**Contact:** dbmhorace@gmail.com
 
-## 📋 Project Overview
-
-This is a comprehensive test automation suite for the [Sauce Demo](https://www.saucedemo.com/) e-commerce website, built using **Playwright with Python** and **pytest**.
-```
-
----
-
-## Example 100: Push to GitHub! 🎉
-
-Now let's get this on GitHub:
-
-### Step 1: Create .gitignore file
-
-Create file `portfolio_project/.gitignore`:
-```
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-venv/
-env/
-
-# Playwright
-test-results/
-playwright-report/
-screenshots/
-videos/
-*.png
-*.mp4
-
-# Pytest
-.pytest_cache/
-.coverage
-htmlcov/
-report.html
-assets/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Test data
-test_users.db
-*.db
